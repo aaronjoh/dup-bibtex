@@ -1,6 +1,6 @@
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('input',nargs='+')
+parser.add_argument('input', nargs='+')
 args = parser.parse_args()
 
 import re
@@ -12,7 +12,7 @@ for file in args.input:
         match = re.search(r'@\w+\{([^,]+),', line)
         if match:
           entry = match.group(1)
-        match = re.search(r'^\s*title\s*=\s*["]?\s*\{([^\}]+)\}\s*["]?\s*,', line)
+        match = re.search(r'^\s*title\s*=\s*["]?\s*\{(.+)\}\s*["]?\s*,', line)
         if match:
             title = match.group(1)
             d[entry] = title.lower()
